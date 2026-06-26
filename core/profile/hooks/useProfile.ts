@@ -366,14 +366,12 @@ const saveProfile = useCallback(async () => {
     const phoneForSave = form.phone.trim() ? phoneToSave(form.phone) : undefined;
     
     // Address
-    const address = form.addressFull && form.addressCity
-      ? { 
-          detailAddress: form.addressFull, 
-          city: form.addressCity, 
-          latitude: location.lat, 
-          longitude: location.lng 
-        }
-      : undefined;
+    const address = {
+      detailAddress: form.addressFull.trim(),
+      city: form.addressCity.trim(),
+      latitude: location.lat,
+      longitude: location.lng,
+    };
     
     // Save
     await profileService.saveProfile({

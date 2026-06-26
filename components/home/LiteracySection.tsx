@@ -29,7 +29,7 @@ export default function LiteracySection() {
   ];
 
   return (
-      <div className="relative rounded-3xl bg-gradient-to-br from-amber-50 via-white to-yellow-100/60 border border-amber-100 shadow-xl p-5 xl:p-8 overflow-hidden">
+      <div className="relative rounded-3xl bg-gradient-to-br from-amber-50 via-white to-yellow-100/60 border border-amber-100 shadow-xl p-5 overflow-hidden">
 
       {/* HEADER */}
       <div className="flex items-center gap-3">

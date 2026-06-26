@@ -6,6 +6,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import { useSessionStore } from "@/core/auth/store/session.store";
 
 import Avatar from "@/components/profile/settings/AvatarProfile";
@@ -15,7 +16,7 @@ import Save from "@/components/profile/settings/SaveProfile";
 import { useProfile } from "@/core/profile/hooks/useProfile";
 import { sweet } from "@/shared/utils/sweet";
 
-import { Loader2 } from "lucide-react";
+import { Loader2, ArrowLeft } from "lucide-react";
 
 const MapsProfile = dynamic(
   () => import("@/components/profile/settings/MapsProfile"),
@@ -24,6 +25,7 @@ const MapsProfile = dynamic(
 
 export default function ProfileSettingsPage() {
   const { session } = useSessionStore();
+  const router = useRouter();
   const uid = session?.uid || "";
 
   const {
@@ -68,8 +70,20 @@ export default function ProfileSettingsPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-50 via-white to-white px-4 py-10">
-      <div className="w-full max-w-2xl bg-white rounded-3xl shadow-xl border overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-green-50 via-white to-white px-4 py-6 pt-24 flex justify-center">
+
+  <div className="w-full max-w-2xl bg-white rounded-3xl shadow-xl border overflow-hidden">
+
+    {/* BACK BUTTON (DI DALAM CARD) */}
+    <div className="p-4 bg-white/70 backdrop-blur-md">
+      <button
+        onClick={() => router.back()}
+        className="flex items-center gap-2 px-4 py-2 bg-white shadow-sm rounded-full border hover:bg-gray-50 transition"
+      >
+        <ArrowLeft size={16} />
+        <span className="text-sm font-medium">Kembali</span>
+      </button>
+    </div>
 
         {/* AVATAR */}
         <div className="p-6">

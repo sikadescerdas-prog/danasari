@@ -57,7 +57,7 @@ export default function PopulationHeader({ years, onDelete }: Props) {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-t-2xl bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-600 px-8 pt-8 pb-6">
+    <div className="relative overflow-hidden rounded-t-2xl bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-600 px-4 sm:px-8 pr-4 sm:pr-8 pt-6 sm:pt-8 pb-6">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-16 -left-16 w-40 h-40 bg-white/40 rounded-full blur-2xl animate-pulse"></div>
         <div className="absolute top-1/2 -right-8 w-32 h-32 bg-white/30 rounded-full blur-xl animate-pulse delay-700"></div>
@@ -65,7 +65,7 @@ export default function PopulationHeader({ years, onDelete }: Props) {
       </div>
 
       <div className="relative z-10">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className="flex items-center gap-5">
             <div className="w-14 h-14 bg-white/30 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/40">
               <FaUsers className="w-7 h-7 text-white" />
@@ -86,7 +86,7 @@ export default function PopulationHeader({ years, onDelete }: Props) {
               {years.length === 0 ? (
                 <button
                   onClick={handleAdd}
-                  className="flex items-center gap-2 px-3 py-2.5 bg-white/20 backdrop-blur-md rounded-xl border border-white/30 hover:bg-white/30"
+                  className="flex items-center gap-2 px-3 py-2.5 bg-white/20 backdrop-blur-md rounded-xl border border-white/30 hover:bg-white/30 shrink-0"
                 >
                   <FaPlus className="w-4 h-4 text-white" />
                   <span className="hidden md:inline text-sm font-semibold text-white">

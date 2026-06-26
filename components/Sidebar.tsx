@@ -141,17 +141,13 @@ export function Sidebar({
             icon: Settings,
             submenu: [
               { title: "Users", href: "/dashboard/users", icon: Users },
+              /* module 
               { title: "Module", href: "/dashboard/module", icon: Puzzle },
+               */
             ],
           },
         ]
       : []),
-
-    {
-      title: "Pengaduan",
-      icon: MessageSquare,
-      href: "/dashboard/complaints",
-    },
   ];
 
   return (

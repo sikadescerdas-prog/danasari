@@ -49,6 +49,23 @@ export default function ProfilePage() {
   const handleBukaToko = async () => {
     if (!uid) return;
 
+    // CEK PROFIL DULU
+    if (!profile?.isProfileComplete) {
+      await sweet.error({
+        title: "Profil Belum Lengkap",
+        text: "Silakan lengkapi profil terlebih dahulu.",
+      });
+
+      router.push("/profile/settings");
+      return;
+    }
+
+    // CEK SUDAH PUNYA TOKO ATAU BELUM
+    if (profile?.hasStore) {
+      router.push("/store/settings");
+      return;
+    }
+
     const confirm = await sweet.confirm({
       title: "Buka Toko?",
       text: "Yakin ingin membuka toko?",
@@ -152,11 +169,13 @@ export default function ProfilePage() {
         ? () => router.push("/store/settings")
         : handleBukaToko,
     },
+    /*
     {
       label: "Settings",
       icon: <Settings size={18} className="text-gray-600" />,
       onClick: () => router.push("/profile/security"),
     }
+    */
   );
 
   if (!uid || isLoading) {

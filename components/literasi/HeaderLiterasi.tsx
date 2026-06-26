@@ -10,12 +10,8 @@ export default function HeaderLiterasi() {
     <>
       {/* Banner */}
       <div className="h-64 bg-cover bg-center relative mt-16">
-        <img src="/img/bg-desa.jpeg" alt="Banner" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-          <div className="text-center text-white">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2">Literasi Desa</h1>
-            <p className="text-lg">Baca & pelajari informasi menarik</p>
-          </div>
+        <img src="/img/literasi.png" alt="Banner" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 flex items-center justify-center">
         </div>
       </div>
     </>

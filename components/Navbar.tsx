@@ -52,14 +52,13 @@ export default function Navbar() {
   
   const isLoggedIn = !!session.uid;
   const role = session?.role || "";
-  const hasStore = (session as any)?.hasStore === true;
   const isSeller = role === "seller";
   const isAdmin = role === "admin" || role === "superadmin";
   
-  const isSearchPage = ["/store", "/literasi", "/news"].some(p => pathname.startsWith(p));
+  const isSearchPage = ["/store", "/literasi"].some(p => pathname.startsWith(p));
   const isLiterasiPage = pathname.startsWith("/literasi");
   const isStorePage = pathname.startsWith("/store");
-  const isBeritaPage = pathname.startsWith("/dashboard/news");
+  const isBeritaPage = pathname.startsWith("/berita");
 
   // navLinks dengan dropdown lengkap
   const navLinks = [
@@ -102,9 +101,6 @@ export default function Navbar() {
   if (isLoggedIn) {
     if (isAdmin) {
       additionalLinks.push({ href: "/dashboard", label: "Dashboard" });
-    }
-    if (isSeller && hasStore) {
-      additionalLinks.push({ href: "/store", label: "Toko Saya" });
     }
   }
 
@@ -162,17 +158,17 @@ export default function Navbar() {
                     className="text-sm font-medium flex md:flex items-center gap-2 group p-2.5 rounded-full hover:bg-slate-100 transition-all duration-300 shadow-sm"
                   >
                     <PlusCircle className="w-5 h-5 text-slate-400 group-hover:text-[#25C95F] transition-all duration-300" />
-                    <span className=" lg:hidden text-slate-400 group-hover:text-[#25C95F] transition-all duration-300">Tulis Artikel</span>
+                    <span className="hidden lg:inline text-slate-400 group-hover:text-[#25C95F] transition-all duration-300">Tulis Artikel</span>
                   </Link>
                 )}
 
-                {isStorePage && isSeller && hasStore && (
+                {isStorePage && isSeller && (
                   <Link
                     href="/store/form"
                     className="text-sm font-medium flex md:flex items-center gap-2 group p-2.5 rounded-full hover:bg-slate-100 transition-all duration-300 shadow-sm"
                   >
                     <PlusCircle className="w-5 h-5 text-slate-400 group-hover:text-[#25C95F] transition-all duration-300" />
-                    <span className="lg:hidden text-slate-400 group-hover:text-[#25C95F] transition-all duration-300">Tambah Produk</span>
+                    <span className="hidden lg:inline text-slate-400 group-hover:text-[#25C95F] transition-all duration-300">Tambah Produk</span>
                   </Link>
                 )}
 
@@ -182,7 +178,7 @@ export default function Navbar() {
                     className="text-sm font-medium flex md:flex items-center gap-2 group p-2.5 rounded-full hover:bg-slate-100 transition-all duration-300 shadow-sm"
                   >
                     <PlusCircle className="w-5 h-5 text-slate-400 group-hover:text-[#25C95F] transition-all duration-300" />
-                    <span className="lg:hidden text-slate-400 group-hover:text-[#25C95F] transition-all duration-300">Tulis Berita</span>
+                    <span className="hidden lg:inline text-slate-400 group-hover:text-[#25C95F] transition-all duration-300">Tulis Berita</span>
                   </Link>
                 )}
 

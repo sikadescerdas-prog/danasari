@@ -23,14 +23,14 @@ export default function CategoryBerita({
 }: CategoryBeritaProps) {
 
   const getTypeClass = (type: FilterType) =>
-    `flex items-center gap-2 px-3 py-2 text-sm font-medium border-b-2 transition ${
+    `flex items-center gap-2 px-3 py-2 text-sm font-medium border-b-2 transition whitespace-nowrap ${
       filterType === type
         ? 'border-green-500 text-green-600'
         : 'border-transparent text-gray-600 hover:text-gray-800'
     }`;
 
   const getSortClass = (sort: FilterSort) =>
-    `flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium rounded-lg border transition w-full md:w-auto ${
+    `flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium rounded-lg border transition whitespace-nowrap ${
       filterSort === sort
         ? 'bg-green-500 text-white border-green-500'
         : 'bg-white text-gray-600 hover:text-gray-800 border-gray-300'
@@ -39,65 +39,64 @@ export default function CategoryBerita({
   return (
     <div className="w-full bg-white border rounded-lg shadow-sm px-4 py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
 
-      {/* LEFT - TYPE FILTER */}
-      <div className="grid grid-cols-4 md:flex md:flex-wrap items-center gap-2 w-full md:w-auto">
-        <button onClick={() => onFilterTypeChange('')} className={`${getTypeClass('')} w-full md:w-auto justify-center`}>
+      {/* TYPE FILTER - HORIZONTAL SCROLL */}
+      <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide md:flex-wrap md:overflow-visible w-full md:w-auto">
+
+        <button onClick={() => onFilterTypeChange('')} className={getTypeClass('')}>
           <List className="w-4 h-4" />
           Semua
         </button>
 
-        <button onClick={() => onFilterTypeChange('berita')} className={`${getTypeClass('berita')} w-full md:w-auto justify-center`}>
+        <button onClick={() => onFilterTypeChange('berita')} className={getTypeClass('berita')}>
           <FileText className="w-4 h-4" />
           Berita
         </button>
 
-        <button onClick={() => onFilterTypeChange('pengumuman')} className={`${getTypeClass('pengumuman')} w-full md:w-auto justify-center`}>
+        <button onClick={() => onFilterTypeChange('pengumuman')} className={getTypeClass('pengumuman')}>
           <Bell className="w-4 h-4" />
           Pengumuman
         </button>
 
-        <button onClick={() => onFilterTypeChange('event')} className={`${getTypeClass('event')} w-full md:w-auto justify-center`}>
+        <button onClick={() => onFilterTypeChange('event')} className={getTypeClass('event')}>
           <CalendarDays className="w-4 h-4" />
           Event
         </button>
+
       </div>
 
-      {/* RIGHT - SORT + RESET */}
-      <div className="flex items-center justify-between w-full md:w-auto gap-2">
+      {/* SORT + RESET */}
+      <div className="flex items-center gap-2 justify-between md:justify-end w-full md:w-auto overflow-x-auto whitespace-nowrap scrollbar-hide">
 
-  {/* LEFT: filter buttons */}
-  <div className="flex items-center gap-2">
-     <span className="text-sm font-medium text-gray-500 mr-1">
-      Filter
-    </span>
-    <button onClick={() => onFilterSortChange('newest')} className={getSortClass('newest')}>
-      Terbaru
-    </button>
+        <span className="text-sm font-medium text-gray-500 hidden md:inline">
+          Filter
+        </span>
 
-    <button onClick={() => onFilterSortChange('oldest')} className={getSortClass('oldest')}>
-      Terlama
-    </button>
+        <button onClick={() => onFilterSortChange('newest')} className={getSortClass('newest')}>
+          Terbaru
+        </button>
 
-    <button onClick={() => onFilterSortChange('az')} className={getSortClass('az')}>
-      <FaArrowUpAZ className="w-4 h-4" />
-      A-Z
-    </button>
+        <button onClick={() => onFilterSortChange('oldest')} className={getSortClass('oldest')}>
+          Terlama
+        </button>
 
-    <button onClick={() => onFilterSortChange('za')} className={getSortClass('za')}>
-      <FaArrowDownAZ className="w-4 h-4" />
-      Z-A
-    </button>
-  </div>
+        <button onClick={() => onFilterSortChange('az')} className={getSortClass('az')}>
+          <FaArrowUpAZ className="w-4 h-4" />
+           <span className="hidden md:inline">A-Z</span>
+        </button>
 
-  {/* RIGHT: reset */}
-  <button
-    onClick={onResetFilters}
-    className="flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-red-500 border border-red-200 rounded-lg hover:bg-red-50"
-  >
-    <RotateCcw className="w-4 h-4" />
-  </button>
+        <button onClick={() => onFilterSortChange('za')} className={getSortClass('za')}>
+          <FaArrowDownAZ className="w-4 h-4" />
+            <span className="hidden md:inline">Z-A</span>
+        </button>
 
-</div>
+        <button
+          onClick={onResetFilters}
+          className="flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-red-500 border border-red-200 rounded-lg hover:bg-red-50"
+        >
+          <RotateCcw className="w-4 h-4" />
+        </button>
+
+      </div>
 
     </div>
   );

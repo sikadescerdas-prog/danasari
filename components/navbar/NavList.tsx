@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { X, ChevronRight, ChevronDown, Home, Building, Store, FileText, Newspaper, Sparkles, Settings, LogOut, User, LogIn } from "lucide-react";
+import { Grid2x2, Info, BookOpen, X, ChevronRight, ChevronDown, Home, Building, Store, FileText, Newspaper, Sparkles, Settings, LogOut, User, LogIn } from "lucide-react";
 import { ref, onValue, Unsubscribe } from "firebase/database";
 import { useSessionStore } from "@/core/auth/store/session.store";
 import { useLogout } from "@/core/auth/hooks/useLogout";
@@ -84,18 +84,13 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       ]
     },
     { href: "/store", label: "UMKM", icon: <Store className="w-5 h-5" /> },
-    { href: "/literasi", label: "Literasi", icon: <FileText className="w-5 h-5" /> },
+    { href: "/literasi", label: "Literasi", icon: <BookOpen className="w-5 h-5" /> },
     { href: "/berita", label: "Berita", icon: <Newspaper className="w-5 h-5" /> },
-    { href: "/layanan", label: "Layanan", icon: <Sparkles className="w-5 h-5" /> },
-    { href: "/tentang", label: "Tentang", icon: <Sparkles className="w-5 h-5" /> },
+    { href: "/layanan", label: "Layanan", icon: <Grid2x2 className="w-5 h-5" /> },
+    { href: "/tentang", label: "Tentang", icon: <Info className="w-5 h-5" /> },
   ];
 
-  const userMenuItems: NavListItem[] = isLoggedIn 
-    ? [
-        { href: "/profile", label: "Profile", icon: <User className="w-5 h-5" /> },
-        { href: "/settings", label: "Pengaturan", icon: <Settings className="w-5 h-5" /> },
-      ]
-    : [];
+  
 
   const handleLinkClick = (href: string) => {
     router.push(href);
@@ -189,24 +184,6 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 </div>
               )}
             </div>
-          ))}
-        </div>
-
-        <div className="h-px bg-slate-200 mx-4" />
-
-        <div className="py-1">
-          {userMenuItems.map((item) => (
-            <button
-              key={item.href}
-              onClick={() => handleLinkClick(item.href)}
-              className="flex items-center justify-between w-full px-4 py-3 text-sm text-slate-600 hover:bg-slate-100"
-            >
-              <div className="flex items-center gap-3">
-                {item.icon}
-                {item.label}
-              </div>
-              <ChevronRight className="w-4 h-4 opacity-40" />
-            </button>
           ))}
         </div>
 

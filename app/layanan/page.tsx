@@ -24,75 +24,59 @@ const services = [
     title: "Surat Domisili",
     icon: ClipboardList,
     color: "from-indigo-500 to-blue-400",
-    requirements: [
-      "KTP & KK",
-      "Surat pengantar RT/RW",
-      "Form permohonan",
-    ],
+    requirements: ["KTP & KK", "Surat pengantar RT/RW", "Form permohonan"],
   },
   {
     title: "Bantuan Sosial",
     icon: ShieldCheck,
     color: "from-emerald-500 to-green-400",
-    requirements: [
-      "KTP & KK",
-      "Surat Tidak Mampu (SKTM)",
-      "Data penghasilan keluarga",
-    ],
+    requirements: ["KTP & KK", "SKTM", "Data penghasilan keluarga"],
   },
   {
     title: "Surat Usaha",
     icon: Briefcase,
     color: "from-amber-500 to-orange-400",
-    requirements: [
-      "KTP & KK",
-      "Surat usaha RT/RW",
-      "Foto usaha aktif",
-    ],
+    requirements: ["KTP & KK", "Surat usaha RT/RW", "Foto usaha aktif"],
   },
   {
     title: "Pengantar KTP",
     icon: IdCard,
     color: "from-violet-500 to-purple-400",
-    requirements: [
-      "KK asli",
-      "KTP lama (jika ada)",
-      "Surat pengantar RT/RW",
-    ],
+    requirements: ["KK asli", "KTP lama (jika ada)", "Surat pengantar RT/RW"],
   },
   {
     title: "Pengaduan Desa",
     icon: MessageCircle,
     color: "from-rose-500 to-pink-400",
-    requirements: [
-      "Identitas pelapor (opsional)",
-      "Deskripsi laporan jelas",
-      "Foto bukti (opsional)",
-    ],
+    requirements: ["Identitas pelapor (opsional)", "Deskripsi jelas", "Foto bukti"],
   },
 ];
 
 export default function LayananPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-sky-100/40 px-4 pt-20 pb-24 md:px-10">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 px-4 pt-24 pb-24 md:px-10">
 
       {/* HEADER */}
-      <div className="mx-auto mb-12 max-w-4xl text-center">
-        <span className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600 shadow-sm">
+      <div className="mx-auto mb-14 max-w-4xl text-center">
+        <div className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white/70 px-4 py-1 text-xs font-medium text-blue-600 shadow-sm backdrop-blur">
+          <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
           Layanan Desa Digital
-        </span>
+        </div>
 
-        <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">
-          Syarat & Ketentuan Layanan
+        <h1 className="mt-5 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+          Syarat & Ketentuan{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-sky-400">
+            Layanan
+          </span>
         </h1>
 
-        <p className="mt-2 text-sm text-gray-600 md:text-base">
-          Semua layanan desa transparan, cepat, dan mudah diakses
+        <p className="mt-3 text-sm md:text-base text-slate-500 max-w-xl mx-auto">
+          Semua layanan desa kini lebih cepat, transparan, dan dapat diakses secara online.
         </p>
       </div>
 
       {/* GRID */}
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 
         {services.map((item, i) => {
           const Icon = item.icon;
@@ -102,55 +86,71 @@ export default function LayananPage() {
               key={i}
               className="
                 group relative overflow-hidden rounded-3xl
-                border border-white/40
-                bg-white/60 backdrop-blur-xl
-                p-6 shadow-sm
+                bg-white/70 backdrop-blur-xl
+                border border-slate-100
+                shadow-sm
                 transition-all duration-300
-                hover:-translate-y-1 hover:shadow-xl
-                hover:border-blue-200/60
+                hover:-translate-y-2 hover:shadow-2xl hover:border-blue-200
               "
             >
 
-              {/* soft glow */}
-              <div className="pointer-events-none absolute -top-10 -right-10 h-40 w-40 rounded-full bg-blue-300/20 blur-3xl opacity-0 transition group-hover:opacity-100" />
+              {/* glow background */}
+              <div className="pointer-events-none absolute -top-20 -right-20 h-56 w-56 rounded-full bg-blue-400/10 blur-3xl opacity-0 transition group-hover:opacity-100" />
 
-              {/* HEADER */}
-              <div className="mb-5 flex items-center gap-4">
+              {/* top accent bar */}
+              <div className={`h-1 w-full bg-gradient-to-r ${item.color}`} />
 
-                <div
-                  className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${item.color} text-white shadow-md ring-1 ring-white/30 transition group-hover:scale-110`}
-                >
-                  <Icon className="h-5 w-5" />
-                </div>
+              <div className="p-6">
 
-                <div>
-                  <h3 className="text-base font-semibold text-gray-900 md:text-lg">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-gray-500">
-                    Syarat pengajuan layanan
-                  </p>
-                </div>
+                {/* HEADER */}
+                <div className="flex items-center gap-4 mb-5">
 
-              </div>
+                  <div
+                    className={`relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${item.color} text-white shadow-lg`}
+                  >
+                    <Icon className="h-5 w-5" />
 
-              {/* REQUIREMENTS */}
-              <div className="space-y-2">
-                {item.requirements.map((req, idx) => (
-                  <div key={idx} className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-blue-400/80" />
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      {req}
+                    {/* small glow dot */}
+                    <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-white/80 blur-[1px]" />
+                  </div>
+
+                  <div>
+                    <h3 className="text-base md:text-lg font-semibold text-slate-900">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-slate-400">
+                      Dokumen persyaratan
                     </p>
                   </div>
-                ))}
-              </div>
 
-              {/* FOOTER */}
-              <div className="mt-5 text-xs font-medium text-blue-600/80">
-                ✔ Siap diajukan secara online
-              </div>
+                </div>
 
+                {/* REQUIREMENTS */}
+                <div className="space-y-2">
+                  {item.requirements.map((req, idx) => (
+                    <div key={idx} className="flex items-start gap-2">
+                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-400" />
+                      <p className="text-sm text-slate-600 leading-relaxed">
+                        {req}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* FOOTER */}
+                <div className="mt-6 flex items-center justify-between">
+
+                  <span className="text-xs font-medium text-emerald-600">
+                    ● Online Ready
+                  </span>
+
+                  <button className="text-xs font-semibold text-blue-600 hover:text-blue-700 transition">
+                    Ajukan →
+                  </button>
+
+                </div>
+
+              </div>
             </div>
           );
         })}

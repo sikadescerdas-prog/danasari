@@ -110,32 +110,14 @@ export const profileService = {
       !!profile.address?.city;
 
     // CLEAN PROFILE
-    const cleanProfile: Partial<Profile> = {
+    const cleanProfile: any = {
       uid,
 
-      ...(profile.fullname !== undefined && {
-        fullname: profile.fullname,
-      }),
-
-      ...(profile.phone !== undefined && {
-        phone: profile.phone ? phoneToSave(profile.phone) : undefined,
-      }),
-
-      ...(profile.bio !== undefined && {
-        bio: profile.bio,
-      }),
-
-      ...(profile.gender !== undefined && {
-        gender: profile.gender,
-      }),
-
-      ...(profile.birthDate !== undefined && {
-        birthDate: profile.birthDate,
-      }),
-
-      ...(profile.address !== undefined && {
-        address: profile.address,
-      }),
+      fullname: profile.fullname ?? "",
+      phone: profile.phone ? phoneToSave(profile.phone) : "",
+      bio: profile.bio ?? "",
+      gender: profile.gender ?? "",
+      birthDate: profile.birthDate ?? "",
 
       ...(profile.avatar !== undefined &&
         profile.avatar !== null && {
@@ -145,9 +127,7 @@ export const profileService = {
           },
         }),
 
-      ...(profile.hasStore !== undefined && {
-        hasStore: profile.hasStore,
-      }),
+      hasStore: profile.hasStore ?? false,
 
       isProfileComplete,
 
@@ -158,6 +138,13 @@ export const profileService = {
     Object.entries(cleanProfile).forEach(([key, value]) => {
       updates[`profiles/${uid}/${key}`] = value;
     });
+
+    updates[`profiles/${uid}/address`] = {
+      city: profile.address?.city ?? "",
+      detailAddress: profile.address?.detailAddress ?? "",
+      latitude: profile.address?.latitude ?? 0,
+      longitude: profile.address?.longitude ?? 0,
+    };
 
     // SAVE FIREBASE
     await update(ref(db), updates);

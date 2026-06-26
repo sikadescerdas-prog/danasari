@@ -72,7 +72,7 @@ export default function StatsSection() {
       label: "Jiwa",
       icon: <Users className="h-5 w-5 lg:h-8 w-8" />,
       color: "blue",
-      href: "/penduduk",
+      href: "/populasi",
       change: populationChange,
       changeLabel: "dari tahun lalu",
       hasComparison: true,
@@ -85,7 +85,7 @@ export default function StatsSection() {
       label: "Pelaku Usaha",
       icon: <Store className="h-5 w-5 lg:h-8 w-8" />,
       color: "orange",
-      href: "/umkm",
+      href: "/store",
       hasComparison: false,
     },
     {
@@ -95,7 +95,7 @@ export default function StatsSection() {
       label: "Wilayah",
       icon: <Home className="h-5 w-5 lg:h-8 w-8" />,
       color: "purple",
-      href: "/wilayah",
+      href: "/populasi",
       hasComparison: false,
     },
     {
@@ -105,7 +105,7 @@ export default function StatsSection() {
       label: "Potensi",
       icon: <MapPin className="h-5 w-5 lg:h-8 w-8" />,
       color: "green",
-      href: "/potential",
+      href: "/potensi",
       hasComparison: false,
     },
   ];

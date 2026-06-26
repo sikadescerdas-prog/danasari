@@ -66,44 +66,78 @@ export default function UmkmSection() {
       </div>
 
       {/* SWIPER WRAPPER (BIAR CENTER) */}
-      <div className="relative mx-auto max-w-6xl">
-        <Swiper
-          modules={[Navigation, FreeMode]}
-          navigation
-          freeMode
-          centeredSlides={false}
-          grabCursor
-          spaceBetween={10}
-          slidesPerView={4}
-          breakpoints={{
-            320: { slidesPerView: 2.5 },   // ✅ mobile 4 item
-            480: { slidesPerView: 3 },
-            640: { slidesPerView: 4 },
-            768: { slidesPerView: 4.5 },
-            1024: { slidesPerView: 5 },
-            1280: { slidesPerView: 5.5 },
-          }}
-        >
-          {loading
-            ? Array.from({ length: 6 }).map((_, i) => (
-                <SwiperSlide key={i}>
-                  <div className="h-[180px] rounded-2xl bg-gray-100 animate-pulse" />
-                </SwiperSlide>
-              ))
-            : products.map((product) => (
-                <SwiperSlide key={product.id} className="!h-auto">
-                  <div className="scale-[0.92] origin-center">
-                    <ProductCard
-                      product={product}
-                      storeSlug={product.storeSlug}
-                      storeName={product.storeName}
-                      showMinimal={true}
-                    />
-                  </div>
-                </SwiperSlide>
-              ))}
-        </Swiper>
+<div className="relative mx-auto max-w-6xl">
+
+  {loading ? (
+    <Swiper
+      modules={[Navigation, FreeMode]}
+      navigation
+      freeMode
+      spaceBetween={10}
+      slidesPerView={4}
+      breakpoints={{
+        320: { slidesPerView: 2.5 },
+        480: { slidesPerView: 3 },
+        640: { slidesPerView: 4 },
+        768: { slidesPerView: 4.5 },
+        1024: { slidesPerView: 5 },
+        1280: { slidesPerView: 5.5 },
+      }}
+    >
+      {Array.from({ length: 6 }).map((_, i) => (
+        <SwiperSlide key={i}>
+          <div className="h-[180px] rounded-2xl bg-gray-100 animate-pulse" />
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  ) : products.length === 0 ? (
+    /* ================= EMPTY STATE PREMIUM ================= */
+    <div className="flex flex-col items-center justify-center py-14 text-center rounded-3xl border border-dashed border-emerald-200 bg-white/60 backdrop-blur">
+      
+      <div className="w-14 h-14 rounded-2xl bg-emerald-100 flex items-center justify-center mb-3">
+        <Package className="w-6 h-6 text-emerald-600" />
       </div>
+
+      <h3 className="text-base font-semibold text-slate-800">
+        Belum Ada Produk
+      </h3>
+
+      <p className="text-sm text-slate-500 mt-1 max-w-sm">
+        Produk dari pelaku UMKM desa akan segera ditampilkan di sini.
+      </p>
+    </div>
+  ) : (
+    <Swiper
+      modules={[Navigation, FreeMode]}
+      navigation
+      freeMode
+      grabCursor
+      spaceBetween={10}
+      slidesPerView={4}
+      breakpoints={{
+        320: { slidesPerView: 2.5 },
+        480: { slidesPerView: 3 },
+        640: { slidesPerView: 4 },
+        768: { slidesPerView: 4.5 },
+        1024: { slidesPerView: 5 },
+        1280: { slidesPerView: 5.5 },
+      }}
+    >
+      {products.map((product) => (
+        <SwiperSlide key={product.id} className="!h-auto">
+          <div className="scale-[0.92] origin-center">
+            <ProductCard
+              product={product}
+              storeSlug={product.storeSlug}
+              storeName={product.storeName}
+              showMinimal={true}
+            />
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  )}
+</div>
 
       {/* glow */}
       <div className="pointer-events-none absolute -top-20 -right-20 w-64 h-64 bg-emerald-300/20 blur-3xl rounded-full" />

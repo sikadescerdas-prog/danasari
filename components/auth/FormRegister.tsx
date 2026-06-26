@@ -97,13 +97,14 @@ export default function FormRegister() {
         />
 
         {/* PASSWORD + CONFIRM (SEJAJAR) */}
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {/* PASSWORD */}
           <div>
             <InputGoogle 
               name="password" 
               label="Password" 
               type="password" 
+              placeholder="********"
               value={form.password}
               onChange={handleChange}
               onBlur={() => validateFieldPassword(form.password)}
@@ -119,6 +120,7 @@ export default function FormRegister() {
             name="confirmPassword" 
             label="Konfirmasi Password" 
             type="password" 
+            placeholder="********"
             value={form.confirmPassword}
             onChange={handleChange}
             onBlur={() => validateFieldConfirmPassword(form.password, form.confirmPassword)}
@@ -160,7 +162,7 @@ export default function FormRegister() {
             disabled:opacity-70 disabled:cursor-not-allowed
           "
         >
-          {isSubmitting ? "Memesukkan..." : "Register"}
+          {isSubmitting ? "Loading..." : "Register"}
         </button>
 
         {/* ERROR GENERAL */}

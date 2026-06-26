@@ -82,6 +82,7 @@ export default function UserMenu() {
   const fullname = userData?.fullname || profile?.fullname || "";
   const avatar = userData?.avatar?.url || profile?.avatar?.url || null;
   const email = userData?.email || session?.email || "";
+  const storeSlug = username;
 
   // Get initials
   const initial = getInitials(fullname || username || email);
@@ -157,7 +158,38 @@ export default function UserMenu() {
               </svg>
               Profile
             </Link>
-            
+
+            {isSeller && (
+              <Link
+                href={storeSlug ? `/store/${storeSlug}` : "/store"}
+                className="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-[#25C95F] transition-all duration-200"
+                onClick={() => setIsOpen(false)}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M5 10V6a2 2 0 012-2h10a2 2 0 012 2v4M4 10l1 10h14l1-10" />
+                </svg>
+                Toko Saya
+              </Link>
+            )}
+
+          {isAdmin && (
+            <Link
+              href="/dashboard"
+              className="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-[#25C95F] transition-all duration-200"
+              onClick={() => setIsOpen(false)}
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 3h7v7H3V3zm11 0h7v7h-7V3zM3 14h7v7H3v-7zm11 0h7v7h-7v-7z"
+                />
+              </svg>
+              Dashboard
+            </Link>
+          )}
+          {/* Settings
             <Link
               href="/settings"
               className="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-[#25C95F] transition-all duration-200"
@@ -169,6 +201,8 @@ export default function UserMenu() {
               </svg>
               Settings
             </Link>
+            */}
+
           </div>
           
           {/* Logout */}

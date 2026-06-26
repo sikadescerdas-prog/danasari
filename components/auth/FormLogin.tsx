@@ -60,6 +60,7 @@ export default function FormLogin() {
           name="password" 
           label="Password" 
           type="password" 
+          placeholder="********"
           value={form.password}
           onChange={handleChange}
           onBlur={() => validateFieldPassword(form.password)}
@@ -88,7 +89,7 @@ export default function FormLogin() {
           disabled={isSubmitting}
           className="w-full rounded-xl bg-gradient-to-r from-[#7AF3AE] to-[#25C95F] py-3 text-white font-semibold shadow-md hover:opacity-95 transition active:scale-[0.99] disabled:opacity-70 disabled:cursor-not-allowed"
         >
-          {isSubmitting ? "Memasuk..." : "Login"}
+          {isSubmitting ? "Loading..." : "Login"}
         </button>
 
         {/* OR DIVIDER */}

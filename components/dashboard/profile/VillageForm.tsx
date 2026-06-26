@@ -164,22 +164,22 @@ export default function VillageForm({
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
               <TextareaGoogle
-  name="history"
-  rows={6}
-  label="Sejarah Desa"
-  value={formData.history}
-  placeholder="Sejarah singkat desa..."
-  onChange={(e) => onChange("history", e.target.value)}
-/>
+                name="history"
+                rows={6}
+                label="Sejarah Desa"
+                value={formData.history}
+                placeholder="Sejarah singkat desa..."
+                onChange={(e) => onChange("history", e.target.value)}
+              />
 
-<TextareaGoogle
-  name="welcomeMessage"
-  rows={6}
-  label="Sambutan"
-  value={formData.welcomeMessage}
-  placeholder="Sambutan kepala desa..."
-  onChange={(e) => onChange("welcomeMessage", e.target.value)}
-/>
+              <TextareaGoogle
+                name="welcomeMessage"
+                rows={6}
+                label="Sambutan"
+                value={formData.welcomeMessage}
+                placeholder="Sambutan kepala desa..."
+                onChange={(e) => onChange("welcomeMessage", e.target.value)}
+              />
             </div>
             
           </div>
@@ -243,7 +243,7 @@ export default function VillageForm({
             <InputGoogle name="locationUrl" label="Link Peta" value={formData.locationUrl} placeholder="https://maps.google.com/..." onChange={(e) => onChange("locationUrl", e.target.value)} />
           </div>
           
-          <div className="col-span-1 space-y-5">
+          <div className="col-span-12 lg:col-span-1 space-y-5 w-full">
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest">Batas</p>
             <InputGoogle name="north" label="Utara" value={addr.north} placeholder="Desa X" onChange={(e) => onAddressChange("north", e.target.value)} />
             <InputGoogle name="south" label="Selatan" value={addr.south} placeholder="Desa Y" onChange={(e) => onAddressChange("south", e.target.value)} />
@@ -251,7 +251,7 @@ export default function VillageForm({
             <InputGoogle name="west" label="Barat" value={addr.west} placeholder="Desa W" onChange={(e) => onAddressChange("west", e.target.value)} />
           </div>
           
-          <div className="col-span-1 space-y-5">
+          <div className="col-span-12 lg:col-span-1 space-y-5 w-full">
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest">Sosmed</p>
             <InputGoogle name="facebook" label="Facebook" value={sosmed.facebook} placeholder="https://facebook.com/..." onChange={(e) => onSosmedChange("facebook", e.target.value)} />
             <InputGoogle name="instagram" label="Instagram" value={sosmed.instagram} placeholder="https://instagram.com/..." onChange={(e) => onSosmedChange("instagram", e.target.value)} />
